@@ -4,9 +4,11 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('airhorner').then(function(cache) {
      return cache.addAll([
+       '/',
        '/index.html',
        '/css/bootstrap.min.css',
        '/css/styles.css',
+       '/css/font.css',
        '/js/jquery-1.10.2.min.js',
        '/js/scripts.min.js',
        '/js/scripts.js',
