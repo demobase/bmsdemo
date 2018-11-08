@@ -4,13 +4,12 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('airhorner').then(function(cache) {
      return cache.addAll([
-       '/',
        '/index.html',
-       '/css/layout.css',
        '/css/bootstrap.min.css',
        '/css/styles.css',
        '/js/jquery-1.10.2.min.js',
        '/js/scripts.min.js',
+       '/js/scripts.js',
        '/js/bootstrap.min.js',
        '/libs/font-awesome/css/font-awesome.min.css',
        '/images/brillio-logo.png',
@@ -25,7 +24,7 @@ self.addEventListener('install', function(e) {
        '/images/dexa.png',
        '/images/data.png',
        '/images/di.png',
-       '/images/atg.png',
+       '/images/atg.png'
      ]);
    })
  );
