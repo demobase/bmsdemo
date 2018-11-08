@@ -26,7 +26,15 @@ self.addEventListener('install', function(e) {
        '/images/dexa.png',
        '/images/data.png',
        '/images/di.png',
-       '/images/atg.png'
+       '/images/atg.png',
+       '/images/down.png',
+       '/images/fb.png',
+       '/images/gh.png',
+       '/images/li.png',
+       '/images/menu_close.png',
+       '/images/menu.png',
+       '/images/tw.png',
+       '/images/up.png'
      ]);
    })
  );
