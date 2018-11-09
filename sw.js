@@ -9,7 +9,7 @@ self.addEventListener('install', function(e) {
        '/css/bootstrap.min.css',
        '/css/styles.css',
        '/css/font.css',
-       '/js/jquery-1.10.2.min.js',
+       '/js/jquery-3.3.1.min.js',
        '/js/scripts.min.js',
        '/js/scripts.js',
        '/js/bootstrap.min.js',
