@@ -20,7 +20,6 @@
         <img src="images/menu.png">
         <!--i class="fa fa-bars" aria-hidden="true"></i-->
     </div>
-    <!-- End #mobile-menu-toggle -->
     <header>
         <div id="mobile-menu-close">
             <span>Close</span> <img src="images/menu_close.png"><!--i class="fa fa-times" aria-hidden="true"></i-->
@@ -46,15 +45,21 @@
             </li>
         </ul>
     </header>
-    <!-- End header -->
 
     <div id="lead">
         <div id="lead-content">
             <img src="images/brillio-logo.png">
             <h2>be a digital-first business</h2>
-            <!--a href="#" class="btn-rounded-white">Download Resume</a-->
+            <a id="btnOpenCam" href="#" class="btn-rounded-white" onclick="openCamera();">Change Background</a><br>
+            <a id="btnUsePic" href="#" class="btn-rounded-white" style="display:none" onclick="setBackground();">Use Picture</a><br>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><video id="camStream" height="200px" width="250px" style="display:none"></video></td>
+                    <td><img id="snapshot" height="200px" width="250px" style="display:none"><canvas id="hiddenCanvas" style="display:none"></canvas></td>
+                </tr>
+                
+            </table>
         </div>
-        <!-- End #lead-content -->
 
         <div id="lead-overlay"></div>
 
@@ -64,9 +69,7 @@
                 <!--i class="fa fa-chevron-down" aria-hidden="true"></i-->
             </span>
         </div>
-        <!-- End #lead-down -->
     </div>
-    <!-- End #lead -->
 
     <div id="about">
         <div class="container">
@@ -87,37 +90,6 @@
             </div>
         </div>
     </div>
-    <!-- End #about -->
-
-    <!--div id="experience" class="background-alt">
-        <h2 class="heading">Our Customers</h2>
-        <div id="experience-timeline">
-            <div data-date="">
-                <h3>Move Inc</h3>
-                <h4>build : experiences customers love</h4>
-                <p>
-                    Brillio’s soup-to-nuts web services overhaul for a long-time client improves lead generation and enhances the experience for their customers. The Move IT team partnered with Brillio to revamp, redevelop, support, and maintain their vast website network.
-                </p>
-            </div>
-
-            <div data-date="">
-                <h3>Employer Name</h3>
-                <h4>Job Title</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-                </p>
-            </div>
-
-            <div data-date="">
-                <h3>Employer Name</h3>
-                <h4>Job Title</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-                </p>
-            </div>
-        </div>
-    </div-->
-    <!-- End #experience -->
 
     <div id="education">
         <h2 class="heading">What We Do</h2>
@@ -129,7 +101,6 @@
                 Our design team is composed of user researchers, interactive designers and art directors spread across global delivery centers. Recognized by Forrester as one of the foremost CX transformation companies in the world, the design studio’s mission is to design and develop digitally disruptive products for clients.
             </p>
         </div>
-        <!-- End .education-block -->
 
         <div class="education-block">
             <h3>Big Data & Analytics</h3>
@@ -139,7 +110,6 @@
                 Our data and analytics team develops data-driven strategies that reveal differentiation. And we bring the people, processes, necessary partnerships, and our proprietary accelerators together to expedite value realization for you.
             </p>
         </div>
-        <!-- End .education-block -->
 
         <div class="education-block">
             <h3>Digital Infrastructure</h3>
@@ -149,7 +119,6 @@
                 We modernize and migrate existing frameworks, and run IT infrastructure in secure, multi-cloud environments to facilitate agile enterprises. We handle it all from advisory consulting to build and migrate to managing and monitoring operations.
             </p>
         </div>
-        <!-- End .education-block -->
 
         <div class="education-block">
             <h3>Advanced Technology Group</h3>
@@ -159,10 +128,8 @@
                 Brillio’s customers receive additional advantage in every engagement when the Advanced Technology Group (ATG) is leveraged. ATG is our in-house innovation and emerging technology incubation center. The team is continuously tracking market trends and identifying opportunities for technology to accelerate our customers’ market advantage. Basically, we demystify emerging technologies.
             </p>
         </div>
-        <!-- End .education-block -->
             
     </div>
-    <!-- End #education -->
 
     <div id="projects" class="background-alt">
         <h2 class="heading">Our Customers</h2>
@@ -172,7 +139,6 @@
                     <div class="project-image">
                         <img src="images/move.jpg" />
                     </div>
-                    <!-- End .project-image -->
                     <div class="project-info">
                         <h3>Move Inc</h3>
                         <p>
@@ -180,15 +146,12 @@
                         </p>
                         <a href="#">Read More</a>
                     </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
 
                 <div class="project shadow-large">
                     <div class="project-image">
                         <img src="images/verizon.jpg" />
                     </div>
-                    <!-- End .project-image -->
                     <div class="project-info">
                         <h3>Verizon</h3>
                         <p>
@@ -196,62 +159,23 @@
                         </p>
                         <a href="#">Read More</a>
                     </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
 
                 <div class="project shadow-large">
-                        <div class="project-image">
-                            <img src="images/ford.jpg" />
-                        </div>
-                        <!-- End .project-image -->
-                        <div class="project-info">
-                            <h3>Ford</h3>
-                            <p>
-                                Brillio’s smart digital interface streamlines the car-buying process and improves the relationship between dealers & customers. Brillio developed a completely new platform called Maestro: an innovative mobile sales app that completely digitizes the car-buying process.
-                            </p>
-                            <a href="#">Read More</a>
-                        </div>
-                        <!-- End .project-info -->
+                    <div class="project-image">
+                        <img src="images/ford.jpg" />
                     </div>
-                    <!-- End .project -->
+                    <div class="project-info">
+                        <h3>Ford</h3>
+                        <p>
+                            Brillio’s smart digital interface streamlines the car-buying process and improves the relationship between dealers & customers. Brillio developed a completely new platform called Maestro: an innovative mobile sales app that completely digitizes the car-buying process.
+                        </p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End #projects -->
-
-    <!--div id="skills">
-        <h2 class="heading">Skills</h2>
-        <ul>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
-        </ul>
-    </div-->
-    <!-- End #skills -->
 
     <div id="contact">
         <h2>Contact Us</h2>
@@ -262,18 +186,16 @@
             United States
         </p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10398.232472153695!2d-121.98461900771659!3d37.40984688912113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc9cc6ea4551d%3A0x2b268f34079a3cdc!2sBrillio+LLC!5e0!3m2!1sen!2sin!4v1541575000279" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe><br>
-        <small><a href="https://goo.gl/maps/Eu8HoE6BTxr" style="color:#fff;text-align:left">View Larger Map</a></small><br><br>
+        <small><a href="https://goo.gl/maps/Eu8HoE6BTxr" target="_blank" style="color:#fff;text-align:left">View Larger Map</a></small><br><br>
         <div id="contact-form">
-            <form method="POST" action="https://formspree.io/email@email.com">
+            <form id="contact-frm">
                 <input type="hidden" name="_subject" value="Contact request from personal website" />
                 <input type="email" name="_replyto" placeholder="Your email" required>
                 <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
+                <button type="button" onclick="submitForm()">Send</button>
             </form>
         </div>
-        <!-- End #contact-form -->
     </div>
-    <!-- End #contact -->
 
     <footer>
         <div class="container">
@@ -308,7 +230,6 @@
             </div>
         </div>
     </footer>
-    <!-- End footer -->
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/scripts.min.js"></script>
@@ -318,6 +239,73 @@
                 .register('/sw.js')
                 .then(function() { console.log("Service Worker Registered."); });
         }
+    </script>
+    <script>
+        function submitForm() {
+            console.log("Submitting form ...");
+            if (navigator.vibrate) {
+                navigator.vibrate(300);
+            }
+            let frm = document.getElementById("contact-frm");
+            frm.method = "POST";
+            frm.action="https://formspree.io/email@email.com";
+            frm.submit();
+        }
+
+        function openCamera() {
+            let btnOpenCam = document.getElementById("btnOpenCam");
+            let btnUsePic = document.getElementById("btnUsePic");
+            let snapshot = document.getElementById("snapshot");
+            let camStream = document.getElementById("camStream");
+            
+            btnOpenCam.style.display = "none";
+            btnUsePic.style.display = "block";
+            snapshot.style.display = "block";
+            camStream.style.display = "block";
+            if (!navigator.getUserMedia) {
+                console.log("Your browser doesn't have support for the navigator.getUserMedia interface.");
+            }
+            else {
+                navigator.getUserMedia({ video: true }, videoSuccess, videoFailure);
+            }
+        }
+
+        function videoSuccess(stream) {
+            let camStream = document.getElementById("camStream");
+            camStream.src = window.URL.createObjectURL(stream);
+            camStream.play();
+        }
+
+        function videoFailure() {
+            console.log("Your browser doesn't have support for the navigator.getUserMedia interface.");
+        }
+
+        function setBackground() {
+            let btnOpenCam = document.getElementById("btnOpenCam");
+            let btnUsePic = document.getElementById("btnUsePic");
+            let snapshot = document.getElementById("snapshot");
+            let camStream = document.getElementById("camStream");
+            let hiddenCanvas = document.getElementById("hiddenCanvas");
+            let leadBox = document.getElementById("lead");
+            let context = hiddenCanvas.getContext('2d');
+
+            let width = camStream.videoWidth;
+            let height = camStream.videoHeight;
+            if (width && height) {
+                hiddenCanvas.width = width;
+                hiddenCanvas.height = height;
+                context.drawImage(camStream, 0, 0, width, height);
+                console.log(hiddenCanvas.toDataURL('image/png'));
+                leadBox.style.backgroundImage = "url('" + hiddenCanvas.toDataURL('image/png') + "')";
+            }
+
+            btnOpenCam.style.display = "block";
+            btnUsePic.style.display = "none";
+            snapshot.style.display = "none";
+            camStream.style.display = "none";
+            camStream = null;
+        }
+
     </script>
 </body>
 
