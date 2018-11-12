@@ -52,7 +52,7 @@
             <h2>be a digital-first business</h2>
             <a id="btnOpenCam" href="#" class="btn-rounded-white" onclick="openCamera();">Change Background</a><br>
             <a id="btnUsePic" href="#" class="btn-rounded-white" style="display:none" onclick="setBackground();">Use Picture</a><br>
-            <center><video id="camStream" height="200px" width="250px" style="display:none"></video></center>
+            <center><video id="camStream" height="300px" width="300px" style="display:none"></video></center>
             <canvas id="hiddenCanvas" style="display:none"></canvas>
         </div>
 
@@ -248,13 +248,6 @@
         }
 
         function openCamera() {
-            let btnOpenCam = document.getElementById("btnOpenCam");
-            let btnUsePic = document.getElementById("btnUsePic");
-            let camStream = document.getElementById("camStream");
-            
-            btnOpenCam.style.display = "none";
-            btnUsePic.style.display = "block";
-            camStream.style.display = "block";
             if (!navigator.getUserMedia) {
                 console.log("Your browser doesn't have support for the navigator.getUserMedia interface.");
             }
@@ -264,9 +257,14 @@
         }
 
         function videoSuccess(stream) {
+            let btnOpenCam = document.getElementById("btnOpenCam");
+            let btnUsePic = document.getElementById("btnUsePic");
             let camStream = document.getElementById("camStream");
             camStream.src = window.URL.createObjectURL(stream);
             camStream.play();
+            btnOpenCam.style.display = "none";
+            btnUsePic.style.display = "block";
+            camStream.style.display = "block";
         }
 
         function videoFailure() {
@@ -295,6 +293,7 @@
             btnUsePic.style.display = "none";
             camStream.style.display = "none";
             camStream.src = null;
+            camStream.classList.remove("visible");
         }
 
     </script>
