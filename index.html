@@ -236,6 +236,8 @@
         }
     </script>
     <script>
+        let localStream;
+
         function submitForm() {
             console.log("Submitting form ...");
             if (navigator.vibrate) {
@@ -257,6 +259,7 @@
         }
 
         function videoSuccess(stream) {
+            localStream = stream;
             let btnOpenCam = document.getElementById("btnOpenCam");
             let btnUsePic = document.getElementById("btnUsePic");
             let camStream = document.getElementById("camStream");
@@ -293,7 +296,20 @@
             btnUsePic.style.display = "none";
             camStream.style.display = "none";
             camStream.src = null;
-            camStream.classList.remove("visible");
+            //localStream.stop();
+            localStream.getVideoTracks()[0].stop();
+
+            if (!('Notification' in window)) {
+                console.log('Notification API not supported!');
+                return;
+            }
+            Notification.requestPermission(function (result) { });
+            try {
+                var notification = new Notification("Website background image has been updated!");
+            } catch (err) {
+                console.log('Notification API error: ' + err);
+            }
+
         }
 
     </script>
