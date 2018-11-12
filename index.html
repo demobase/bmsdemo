@@ -52,13 +52,8 @@
             <h2>be a digital-first business</h2>
             <a id="btnOpenCam" href="#" class="btn-rounded-white" onclick="openCamera();">Change Background</a><br>
             <a id="btnUsePic" href="#" class="btn-rounded-white" style="display:none" onclick="setBackground();">Use Picture</a><br>
-            <table cellspacing="0" cellpadding="0">
-                <tr>
-                    <td><video id="camStream" height="200px" width="250px" style="display:none"></video></td>
-                    <td><img id="snapshot" height="200px" width="250px" style="display:none"><canvas id="hiddenCanvas" style="display:none"></canvas></td>
-                </tr>
-                
-            </table>
+            <center><video id="camStream" height="200px" width="250px" style="display:none"></video></center>
+            <canvas id="hiddenCanvas" style="display:none"></canvas>
         </div>
 
         <div id="lead-overlay"></div>
@@ -255,12 +250,10 @@
         function openCamera() {
             let btnOpenCam = document.getElementById("btnOpenCam");
             let btnUsePic = document.getElementById("btnUsePic");
-            let snapshot = document.getElementById("snapshot");
             let camStream = document.getElementById("camStream");
             
             btnOpenCam.style.display = "none";
             btnUsePic.style.display = "block";
-            snapshot.style.display = "block";
             camStream.style.display = "block";
             if (!navigator.getUserMedia) {
                 console.log("Your browser doesn't have support for the navigator.getUserMedia interface.");
@@ -283,7 +276,6 @@
         function setBackground() {
             let btnOpenCam = document.getElementById("btnOpenCam");
             let btnUsePic = document.getElementById("btnUsePic");
-            let snapshot = document.getElementById("snapshot");
             let camStream = document.getElementById("camStream");
             let hiddenCanvas = document.getElementById("hiddenCanvas");
             let leadBox = document.getElementById("lead");
@@ -301,9 +293,8 @@
 
             btnOpenCam.style.display = "block";
             btnUsePic.style.display = "none";
-            snapshot.style.display = "none";
             camStream.style.display = "none";
-            camStream = null;
+            camStream.src = null;
         }
 
     </script>
