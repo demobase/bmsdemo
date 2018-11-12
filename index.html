@@ -192,13 +192,23 @@
         </div>
     </div>
 
+    <div>
+        <div id="lead-content">
+            <p>Current network type is <b id="networkType">not available</b>.</p>
+            <p>Initial connection state was <b id="status">unknown</b>.</p>
+            <div id="target"></div>
+            <p>Initial battery status was <b id="charging">unknown</b>, level <b id="level">unknown</b>.</p>
+            <div id="batteryTarget"></div>
+            <button class="btn-rounded-white" id="askButton">Ask for location</button>
+            <div id="geoTarget"></div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 copyright">
-                    <p>
-                        Copyright &copy; 2018 Brillio LLC
-                    </p>
+                    <p>Copyright &copy; 2018 Brillio LLC</p>
                 </div>
                 <div class="col-sm-2 top">
                     <span id="to-top">
@@ -237,6 +247,90 @@
     </script>
     <script>
         let localStream;
+
+        function getConnection() {
+            return navigator.connection || navigator.mozConnection || navigator.webkitConnection || navigator.msConnection;
+        }
+
+        function updateNetworkInfo(info) {
+            document.getElementById("networkType").innerHTML = info.type + "/" + info.effectiveType;
+        }
+
+        let connection = getConnection();
+        if (connection) {
+            connection.addEventListener('change', updateNetworkInfo);
+            updateNetworkInfo(connection);
+        }
+
+        document.getElementById('status').innerHTML = navigator.onLine ? 'online' : 'offline';
+
+        let target = document.getElementById('target');
+
+        function handleStateChange() {
+            let timeBadge = new Date().toTimeString().split(' ')[0];
+            let newState = document.createElement('p');
+            let state = navigator.onLine ? 'online' : 'offline';
+            newState.innerHTML = '<span class="badge">' + timeBadge + '</span> Connection state changed to <b>' + state + '</b>.';
+            target.appendChild(newState);
+        }
+
+        window.addEventListener('online', handleStateChange);
+        window.addEventListener('offline', handleStateChange);
+
+        if ('getBattery' in navigator || ('battery' in navigator && 'Promise' in window)) {
+            let batteryTarget = document.getElementById('batteryTarget');
+
+            function handleChange(change) {
+                let timeBadge = new Date().toTimeString().split(' ')[0];
+                let newState = document.createElement('p');
+                newState.innerHTML = '<span class="badge">' + timeBadge + '</span> ' + change + '.';
+                batteryTarget.appendChild(newState);
+            }
+
+            function onChargingChange() {
+                handleChange('Battery charging changed to <b>' + (this.charging ? 'charging' : 'discharging') + '</b>')
+            }
+            
+            function onLevelChange() {
+                handleChange('Battery level changed to <b>' + this.level + '</b>');
+            }
+
+            let batteryPromise;
+            
+            if ('getBattery' in navigator) {
+                batteryPromise = navigator.getBattery();
+            } else {
+                batteryPromise = Promise.resolve(navigator.battery);
+            }
+        
+            batteryPromise.then(function (battery) {
+                document.getElementById('charging').innerHTML = battery.charging ? 'charging' : 'discharging';
+                document.getElementById('level').innerHTML = battery.level;
+                battery.addEventListener('chargingchange', onChargingChange);
+                battery.addEventListener('levelchange', onLevelChange);
+            });
+        }
+
+        var geoTarget = document.getElementById('geoTarget');
+        var watchId;
+
+        function appendLocation(location, verb) {
+            verb = verb || 'updated';
+            var newLocation = document.createElement('p');
+            newLocation.innerHTML = 'Location ' + verb + ': <a href="https://maps.google.com/maps?&z=15&q=' + location.coords.latitude + '+' + location.coords.longitude + '&ll=' + location.coords.latitude + '+' + location.coords.longitude + '" target="_blank">' + location.coords.latitude + ', ' + location.coords.longitude + '</a>';
+            geoTarget.appendChild(newLocation);
+        }
+
+        if ('geolocation' in navigator) {
+            document.getElementById('askButton').addEventListener('click', function () {
+                navigator.geolocation.getCurrentPosition(function (location) {
+                appendLocation(location, 'fetched');
+                });
+                watchId = navigator.geolocation.watchPosition(appendLocation);
+            });
+        } else {
+            geoTarget.innerText = 'Geolocation API not supported.';
+        }
 
         function submitForm() {
             console.log("Submitting form ...");
