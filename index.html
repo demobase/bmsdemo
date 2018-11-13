@@ -39,10 +39,10 @@
                 <a href="#about">News and Resources</a>
             </li>
             <li>
-                <a href="#about">CSR</a>
+                <a href="#contact">Contact Us</a>
             </li>
             <li>
-                <a href="#contact">Contact Us</a>
+                <a href="#experience">Your Device Info</a>
             </li>
         </ul>
     </header>
@@ -221,35 +221,26 @@
         </div>
     </div>
 
-
     <div id="experience" class="background-alt">
         <h2 class="heading">Your Device Info</h2>
-        <h4>Network Type</h4>
-        <p id="networkType">not available</p>
-        
-        <h4>Initial Connection State</h4>
-        <p id="status">unknown</p>
-        <div id="target"></div>
-
-        <h4>Initial Battery Status</h4>
-        <p><span id="charging">unknown</span>, level <span id="level">unknown</span></p>
-        <div id="batteryTarget"></div>
-
-        <h4>Geolocation</h4>
-        <p><button class="btn-rounded-white" id="askButton">Ask for location</button></p>
-        <div id="geoTarget"></div>
-    </div>
-    <!--div>
-        <div id="lead-content">
-            <p>Current network type is <b id="networkType">not available</b>.</p>
-            <p>Initial connection state was <b id="status">unknown</b>.</p>
-            <div id="target"></div>
-            <p>Initial battery status was <b id="charging">unknown</b>, level <b id="level">unknown</b>.</p>
-            <div id="batteryTarget"></div>
-            <button class="btn-rounded-white" id="askButton">Ask for location</button>
-            <div id="geoTarget"></div>
+        <div id="experience-timeline">
+            <div data-date="">
+                <b>Network Type</b> <span id="networkType">not available</span>
+                <br>
+                
+                <b>Initial Connection State</b> <span id="status">unknown</span>
+                <div id="target"></div>
+    
+                <b>Initial Battery Status</b> <span id="charging">unknown</span>, level <span id="level">unknown</span>
+                <div id="batteryTarget"></div>
+                <br>
+    
+                <button class="btn-rounded-white" id="askButton">Request Geolocation</button>
+                <div id="geoTarget"></div>
+                <br>
+            </div>
         </div>
-    </div-->
+    </div>
 
     <footer>
         <div class="container">
